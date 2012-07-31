@@ -6,15 +6,11 @@ var widthRandom;
 var xRandom;
 var yRandom;
 var speedRandom;
-
-
-
 var rightSpin;
 
 //Each object defined is one that can be called upon by 
 SacGeo1={
-	 //Total 17
-	//innerShapes 
+	
 	shapes:[
 	//innerShapes
 	"img/sacGeo1/innerShape1.png",
