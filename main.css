@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background:#000000;
+}
+
+#canvases{position:absolute;top:0px;left:0px;color:#FFF;}
+
+#contact{position:absolute;top:93%; left:0px;height:20px;width:100%;text-align:center;color:#FFF; text-decoration:none;}
+#contact:hover{text-decoration:underline;}
