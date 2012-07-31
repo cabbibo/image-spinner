@@ -1,4 +1,6 @@
-// JavaScript Document
+// This script uses spin.js to create more complex objects that are randomly generated
+
+//GLOBAL VARIABLES
 var shapeRandom;
 var widthRandom;
 var xRandom;
@@ -9,33 +11,33 @@ var speedRandom;
 
 var rightSpin;
 
-//Some of the Shapes
+//Each object defined is one that can be called upon by 
 SacGeo1={
 	 //Total 17
 	//innerShapes 
-	shapes:["img/brokeShape/innerShape1.png",
-	"img/brokeShape/innerShape2.png",
+	shapes:[
+	//innerShapes
+	"img/sacGeo1/innerShape1.png",
+	"img/sacGeo1/innerShape2.png",
 
-	
-	
 	//fullShapes
-	"img/brokeShape/fullShape1.png",
-	"img/brokeShape/fullShape2.png",
-	"img/brokeShape/fullShape3.png",
+	"img/sacGeo1/fullShape1.png",
+	"img/sacGeo1/fullShape2.png",
+	"img/sacGeo1/fullShape3.png",
 	
 	//outerRings
-	"img/brokeShape/outerRing1.png",
-	"img/brokeShape/outerRing2.png",
-	"img/brokeShape/outerRing3.png",
-	"img/brokeShape/outerRing4.png",
+	"img/sacGeo1/outerRing1.png",
+	"img/sacGeo1/outerRing2.png",
+	"img/sacGeo1/outerRing3.png",
+	"img/sacGeo1/outerRing4.png",
 	
 	//hexSquare
-	"img/hexSquare/hexSquare1.png",
+	"img/sacGeo1/hexSquare1.png",
 	
 	//spike
-	"img/spike/spike11.png",
-	"img/spike/spike21.png",
-	"img/spike/spike31.png",
+	"img/sacGeo1/spike11.png",
+	"img/sacGeo1/spike21.png",
+	"img/sacGeo1/spike31.png",
 	
 	//sacGeo1
 	"img/sacGeo1/sacGeo11.png",
@@ -47,21 +49,31 @@ SacGeo1={
 	ratio:1
 };
 	
+	
+//will get a random shape, from the array of shapes you have created
 function getRandomShape(shape){
     var rand= Math.ceil(Math.random()*shape.shapes.length);
 	shapeRandom= shape.shapes[rand-1];
 	
 };
 
-function getRandWidth(){
-	widthRandom=windowY*Math.random();
+//Gets a random width that is within the range
+function getRandWidth(greatest,smallest){
+	var rangeRand=(greatest-smallest)*Math.random();
+	
+	widthRandom=greatest-rangeRand;
 }
 
+
+//gets a random position, that lies somewhere within the screen
 function getRandPos(){
 	xRandom=windowX*Math.random();
 	yRandom=windowY*Math.random();
 }
 
+
+//gets a random speed of rotation, in Radians.
+//lies within a specific range.
 function getRandSpeed(){
 	var randomSpeed = (Math.random()*.01);
 	if (randomSpeed<=.001){
@@ -77,9 +89,16 @@ function getRandSpeed(){
 	}
 }
 
-function createItem(object,number){
+
+//creates an Item of multiple spinning images. 
+//Each image will will be smaller then the one before it
+//number defines how many images are part of the Item.
+//random width, which is less then the greatest width
+//and larger the smallest Width
+//random position
+function createItem(object,number,greatestWidth,smallestWidth){
 	
-	getRandWidth();
+	getRandWidth(greatestWidth,smallestWidth);
 	getRandPos();
 	
 	for (var i=0;i<number;i++){
@@ -92,7 +111,10 @@ function createItem(object,number){
 	
 }
 
-
+//creates an Item of multiple spinning images. 
+//Each image will will be smaller then the one before it
+//number defines how many images are part of the Item.
+//defined width and position
 function createDefItem(object,number,posX,posY,startWidth){
 	
 	widthRandom=startWidth;
@@ -107,24 +129,11 @@ function createDefItem(object,number,posX,posY,startWidth){
 }
 
 
-function createWorld(object,numOfObjects,complexity){
+//creates a random world using the functionality of createItem
+function createWorld(object,numOfObjects,complexity,greatestWidth,smallestWidth){
 	for (var i=0;i<numOfObjects;i++){
-		createItem(object,complexity);
+		createItem(object,complexity,greatestWidth,smallestWidth);
 	}
 }
 
-function createDefWorld(object,numOfObjects,complexity,posX,posY,startWidth){
-	
-	for (var i=0;i<numOfObjects;i++){
-		createDefItem(object,complexity,posX,posY,startWidth);
-	}
-}
-//initImage(imgSrc,objWidth,objRatio,posX,posY,speeds,startAngle)
-	
-function Creator(){
-	this.randomPos = createItem(object,number);
-	this.definedPos=createPosItem(object,number,posX,posY);
-	this.multipleRandom=createWorld(object,numOfObjects,complexity);
-}
-	
 

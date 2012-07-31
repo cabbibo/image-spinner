@@ -8,10 +8,14 @@ var objNum=0;
 
 var objs = []
 
+
+//Initializes the Image object, with all its neccesary atributes
 function initImage(imgSrc,objWidth,objRatio,posX,posY,speeds,startAngle){
 	
 	var canvasName="canvas"+objNum;
-		
+	
+	
+	//writes the new canvas to the html Document	
 	var newcontent = document.createElement('canvas'); 
 	newcontent.id = canvasName;
 	var scr = document.getElementById('canvases');  
@@ -58,10 +62,15 @@ function initImage(imgSrc,objWidth,objRatio,posX,posY,speeds,startAngle){
 	
 	obj.ctx=obj.canvas.getContext('2d');
 	
+	resize(objNum);
 	
+	//This is what starts the Image rotating.
+	rotateDrawing(objNum);
+	
+	//gets the next object number so objects aren't erased on new object creation
+	objNum +=1;
 	
 	//debugging
-	
 	console.log(objNum);
 	console.log(obj.speed);
 	console.log(obj.canvas);
@@ -73,14 +82,6 @@ function initImage(imgSrc,objWidth,objRatio,posX,posY,speeds,startAngle){
 	console.log(obj.centerX);
 	console.log(obj.centeredX);
 	console.log(obj.angleTotal);
-	
-	
-	resize(objNum);
-	
-	//This is what starts the Image rotating.
-	rotateDrawing(objNum);
-	
-	objNum +=1;
 	
 }
 
