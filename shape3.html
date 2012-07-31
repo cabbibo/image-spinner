@@ -3,7 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Untitled Document</title>
-<script src="js/shapes/element1.js" language="javascript" type="text/javascript"></script>
+
+
+<!--scripts for shapes-->
+<script src="js/shapes/sacGeo1.js" language="javascript" type="text/javascript"></script>
+
+
 <script src="js/spin.js" language="javascript" type="text/javascript"></script>
 <script src="js/creator.js" language="javascript" type="text/javascript"></script>
 <link href="main.css" rel="stylesheet"/>
@@ -11,7 +16,7 @@
 <script language="javascript">
 //functions to call when window is loaded
 function go(){
-	createWorld(Element1,5,3,500,200)
+	createDefItem(SacGeo1,5,windowY/2,windowY/2,windowY/1.5);
 }
 
 window.onload=go;
